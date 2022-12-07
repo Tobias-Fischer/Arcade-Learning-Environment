@@ -38,6 +38,7 @@ class CMakeBuild(build_ext):
 
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={config}",
+            f"-DPython_EXECUTABLE={sys.executable}",
             f"-DPython3_EXECUTABLE={sys.executable}",
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
             "-DSDL_SUPPORT=ON",
