@@ -39,7 +39,8 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={config}",
             f"-DPython3_EXECUTABLE={sys.executable}",
-            f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
+            f"-DPython_EXECUTABLE={sys.executable}",
+            f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={os.environ['LIBRARY_LIB']}",
             "-DSDL_SUPPORT=ON",
             "-DSDL_DYNLOAD=ON",
             "-DBUILD_CPP_LIB=OFF",
@@ -81,7 +82,7 @@ class CMakeBuild(build_ext):
             # Multi-config generators have a different way to specify configs
             if not single_config:
                 cmake_args += [
-                    f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{config.upper()}={extdir}"
+                    f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{config.upper()}={os.environ['LIBRARY_LIB']}"
                 ]
                 build_args += ["--config", config]
 
