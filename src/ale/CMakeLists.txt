@@ -66,7 +66,7 @@ if (BUILD_PYTHON_LIB)
 endif()
 
 # Install cpp-lib and CMake config & pkg-config
-if (UNIX AND BUILD_CPP_LIB)
+if (BUILD_CPP_LIB)
   include(GNUInstallDirs)
   include(CMakePackageConfigHelpers)
 
