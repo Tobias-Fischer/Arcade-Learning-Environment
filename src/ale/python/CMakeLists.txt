@@ -1,4 +1,4 @@
-find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
+find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
 
 set(PYBIND11_VER 2.13.1)
 
