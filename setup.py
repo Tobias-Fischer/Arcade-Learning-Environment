@@ -49,6 +49,7 @@ class CMakeBuild(build_ext):
             "-DBUILD_CPP_LIB=OFF",
             "-DBUILD_PYTHON_LIB=ON",
             "-DBUILD_VECTOR_LIB=ON",
+            "-GNinja",
         ]
         # We can only support XLA on platforms with JAX support (e.g., 3.10+ and Windows/Linux)
         if sys.version_info >= (3, 10) and platform.system() in {
@@ -58,7 +59,7 @@ class CMakeBuild(build_ext):
             cmake_args.append("-DBUILD_VECTOR_XLA_LIB=ON")
         build_args = []
 
-        if self.compiler.compiler_type != "msvc":
+        if False:
             # Using Ninja-build since it a) is available as a wheel and b)
             # multithreads automatically. MSVC would require all variables be
             # exported for Ninja to pick it up, which is a little tricky to do.
@@ -79,7 +80,7 @@ class CMakeBuild(build_ext):
                             "-GNinja",
                         ]
 
-        else:
+        elif False:
             # Single config generators are handled "normally"
             single_config = any(x in cmake_generator for x in {"NMake", "Ninja"})
 
